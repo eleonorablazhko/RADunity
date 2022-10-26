@@ -5,6 +5,9 @@ using UnityEngine;
 public class Cubecontrol : MonoBehaviour
 
 {
+
+    float speed = 10f;
+    float roatationspeed = 90;
     // Start is called before the first frame update
     void Start()
     {
