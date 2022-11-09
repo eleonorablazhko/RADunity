@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class assetssecond : MonoBehaviour
 {
-    Rigidbody ourRigidbody;
+
+
+    public Transform projectileCloneTemplate;
     // Start is called before the first frame update
     void Start()
     {
-        ourRigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetMouseButtonDown(0))
         {
-            ourRigidbody.AddExplosionForce(100,transform.position+ Vector3.down+ Vector3.back,2) ;
+
+            Transform newTransform = Instantiate(projectileCloneTemplate, transform.position, transform.rotation);
+
+            Rigidbody newObjectRigidbody = newTransform.GetComponent<Rigidbody>();
+            newObjectRigidbody.AddExplosionForce(1000,
+                transform.position - transform.forward - transform.up, 3);
+
         }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        print("Ouch");
     }
 }
 
